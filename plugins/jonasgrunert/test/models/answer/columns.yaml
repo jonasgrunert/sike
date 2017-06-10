@@ -1,0 +1,12 @@
+columns:
+    answer:
+        label: Answer
+        type: text
+        searchable: true
+        sortable: true
+    question:
+        label: Question
+        type: text
+        sortable: true
+        select: question
+        relation: question

@@ -1,0 +1,10 @@
+name: AboutUs
+form: $/jonasgrunert/aboutus/models/member/fields.yaml
+modelClass: JonasGrunert\Aboutus\Models\Member
+defaultRedirect: jonasgrunert/aboutus/aboutus
+create:
+    redirect: 'jonasgrunert/aboutus/aboutus/update/:id'
+    redirectClose: jonasgrunert/aboutus/aboutus
+update:
+    redirect: jonasgrunert/aboutus/aboutus
+    redirectClose: jonasgrunert/aboutus/aboutus

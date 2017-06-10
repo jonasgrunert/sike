@@ -1,0 +1,79 @@
+description = "Partial for all Blog Buttons"
+==
+<div style='position: relative; heigth: 70 px'>
+    <h3>{{heading}}<h3>
+    <div class="fixed-action-btn horizontal click-to-toggle right" style='position: absolute; top: 0px;'>
+        <a class="btn-floating btn-large red">
+            <i class="material-icons">menu</i>
+        </a>
+        <ul style='position: absolute; top: 0px;'>
+            <li><a class="btn-floating blue" id="sharebutton"><i class="material-icons">share</i></a></li>
+            <li><a class="btn-floating green" id='search-button'><i class="material-icons">search</i></a></li>
+            <li><a class="btn-floating red" href="#contact"><i class="material-icons">add</i></a></li>
+        </ul>
+    </div>
+</div>
+<div id='share' style="display: none;">
+    {% component 'ssbuttonsssb'%}
+</div>
+<form class="form-inline" id='search' style='display: none;' method="GET" action="{{ searchForm.resultPage|page }}">
+    <div class='input-field'>
+        <input type="text" name="search" id='search-input' class="form-control" placeholder="Search">
+    </div>
+    {% if searchForm.categoryFilter %}
+        <select name="cat[]" class="form-control">
+        {% for key,cat in searchForm.categories %}
+            <option value="{{ key }}">{{ cat }}</option>
+        {% endfor %}
+        </select>
+    {% endif %}
+</form>
+ <div class="confirm-container">
+    <!--This will contain the confirmation when the email is successfully sent-->
+</div>
+<div id="contact" class="modal">
+    <div class="modal-content">
+<form class="flexiContactForm" role="form"
+      data-request="{{ contactForm }}::onMailSent"
+      data-request-update="'{{ contactForm }}::confirm': '.confirm-container'">
+
+    <div class="form-groups">
+        <div class="input-field">
+            <input type="text" id="contact-name" value="" name="name">
+            <label for="contact-name">Enter name</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="contact-mail" value="" name="email">
+            <label for="contact-mail">Enter Email</label>
+        </div>
+        <div class="input-field">
+            <input type="text" id="contact-subject" value="" name="subject">
+            <label for="contact-subject">Enter Subject</label>
+        </div>
+        <div class="input-field">
+            <textarea id="contact-text" class="materialize-textarea" value="" name="body"></textarea>
+            <label for="contact-text">Enter Message</label>
+        </div>
+        {% if contactForm.enableCaptcha %}
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="{{ contactForm.siteKey }}"></div>
+            </div>
+        {% endif %}
+    </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-action modal-close btn-flat left">Abbrechen</a>
+        <button type="submit" class="btn-flat modal-action modal-close">Send</button>
+    </div>
+    </form>
+</div>
+
+<script>
+    $('#search-button').click(function(){
+        $('#search').slideToggle("slow");
+    });
+    $('#sharebutton').click(function(){
+        $('#share').slideToggle("slow");
+    });
+    $('.modal').modal({dismissible: true});
+</script>

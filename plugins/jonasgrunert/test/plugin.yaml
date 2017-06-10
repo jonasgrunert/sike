@@ -1,0 +1,24 @@
+plugin:
+    name: 'jonasgrunert.test::lang.plugin.name'
+    description: 'jonasgrunert.test::lang.plugin.description'
+    author: 'Jonas Grunert'
+    icon: oc-icon-question
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Tests
+        url: jonasgrunert/test/tests
+        icon: icon-question
+        sideMenu:
+            tests:
+                label: Tests
+                url: jonasgrunert/test/tests
+                icon: icon-question
+            questions:
+                label: Questions
+                url: jonasgrunert/test/questions
+                icon: icon-question-circle
+            answers:
+                label: Answers
+                url: jonasgrunert/test/anwers
+                icon: icon-exclamation-circle

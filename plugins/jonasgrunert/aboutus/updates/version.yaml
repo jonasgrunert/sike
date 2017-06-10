@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table jonasgrunert_aboutus_members'
+    - builder_table_create_jonasgrunert_aboutus_members.php
+1.0.3:
+    - 'Updated table jonasgrunert_aboutus_members'
+    - builder_table_update_jonasgrunert_aboutus_members.php
+1.0.4:
+    - 'Updated table jonasgrunert_aboutus_members'
+    - builder_table_update_jonasgrunert_aboutus_members_2.php
+1.0.5:
+    - 'Updated table jonasgrunert_aboutus_members'
+    - builder_table_update_jonasgrunert_aboutus_members_3.php

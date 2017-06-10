@@ -1,0 +1,35 @@
+{% set members = __SELF__.members %}
+<div class="w3-row">
+	{% for member in members %}
+		<div class="w3-half">
+			<a href="#{{member.id}}">
+				<img src="{{ member.photo.path }}" style="width: 100%;">
+			</a>
+		</div>
+		<div id="{{member.id}}" class="modal">
+				<div class="modal-content section" style="min-height: 220px;">
+					<div class="col m3 hide-on-small">
+						<img src="{{ member.photo.thumb(200,auto) }}" style="width: 100%;">
+					</div>
+					<div class="col s12 m9">
+						<h5>{{member.surname}}
+							{% if member.nickname %}
+								({{member.nickname}})
+							{% endif %}
+							{{member.name}}
+						</h5>
+						<p>{{member.role}}</p>
+						{% if member.birthday %}
+							<span>Birthday: {{member.birthday|date("d.m.Y")}}</span>
+						{% endif %}
+						<p>
+							Describtion:<br>
+							{{member.fact}}</p>
+					</div>
+				</div>
+			</div>
+	{% endfor %}
+</div>
+<script>
+	$('.modal').modal();
+</script>

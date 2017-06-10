@@ -1,0 +1,42 @@
+fields:
+    surname:
+        label: Surname
+        span: left
+        required: 1
+        type: text
+    name:
+        label: Name
+        span: right
+        required: 1
+        type: text
+    nickname:
+        label: Nickname
+        span: auto
+        type: text
+    role:
+        label: Role
+        span: right
+        required: 1
+        type: text
+    birthday:
+        label: Birthday
+        mode: date
+        span: left
+        type: datepicker
+    photo:
+        label: Photo
+        mode: image
+        imageWidth: '100'
+        imageHeight: '100'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        type: fileupload
+    fact:
+        label: Description
+        span: full
+        size: small
+        required: 1
+        type: textarea

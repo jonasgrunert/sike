@@ -1,0 +1,70 @@
+title = "Post"
+url = "/blog/post/:slug"
+layout = "default"
+description = "Post page"
+is_hidden = 1
+
+[ssbuttonsssb]
+facebook = 1
+twitter = 1
+google+ = 1
+tumblr = 1
+pinterest = 1
+pocket = 1
+reddit = 1
+linkedin = 1
+wordpress = 0
+pinboard = 1
+email = 1
+order_facebook = 1
+order_twitter = 2
+order_google+ = 3
+order_tumblr = 4
+order_pinterest = 5
+order_pocket = 6
+order_reddit = 7
+order_linkedin = 8
+order_wordpress = 9
+order_pinboard = 10
+order_email = 11
+theme = "flat_web_icon_set_color"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog-category"
+==
+{% set post = blogPost.post %}
+<div class='section'>
+    <span>
+        <h2>{{post.title}}</h2>
+        <span class='right'>{{ post.published_at|date('M d, Y') }}</span>
+    </span>
+    {% if post.categories.count > 0 %}
+        {% for category in post.categories %}
+            <a href="/blog/category/{{category.slug}}/1">
+                <div class='chip'>
+                    {{ category.name }}
+                </div>
+            </a>
+        {% endfor %}
+    {% endif%}
+</div>
+<div class="divider"></div>
+<div class='section'>
+    {% if post.featured_images.count %}
+        <div class="carousel carousel-slider center" data-indicators="true" >
+            {% for image in post.featured_images %}
+                <div class="carousel-item">
+                    <img src="{{ image.path }}" class="responsive-img"/>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+
+<p class="flow-text">{{ post.content_html|raw }}</p>
+{% component 'ssbuttonsssb' %}
+<script>
+    $('.carousel').carousel({fullWidth: true});
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+</script>

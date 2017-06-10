@@ -1,0 +1,41 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table jonasgrunert_test_tests'
+    - builder_table_create_jonasgrunert_test_tests.php
+1.0.3:
+    - 'Created table jonasgrunert_test_questions'
+    - builder_table_create_jonasgrunert_test_questions.php
+1.0.4:
+    - 'Updated table jonasgrunert_test_questions'
+    - builder_table_update_jonasgrunert_test_questions.php
+1.0.5:
+    - 'Created table jonasgrunert_test_answers'
+    - builder_table_create_jonasgrunert_test_answers.php
+1.0.6:
+    - 'Updated table jonasgrunert_test_questions'
+    - builder_table_update_jonasgrunert_test_questions_2.php
+1.0.7:
+    - 'Updated table jonasgrunert_test_answers'
+    - builder_table_update_jonasgrunert_test_answers.php
+1.0.8:
+    - 'Updated table jonasgrunert_test_questions'
+    - builder_table_update_jonasgrunert_test_questions_3.php
+1.0.9:
+    - 'Updated table jonasgrunert_test_answers'
+    - builder_table_update_jonasgrunert_test_answers_2.php
+1.0.10:
+    - 'Updated table jonasgrunert_test_questions'
+    - builder_table_update_jonasgrunert_test_questions_4.php
+1.0.11:
+    - 'Updated table jonasgrunert_test_answers'
+    - builder_table_update_jonasgrunert_test_answers_3.php
+1.0.12:
+    - 'Updated table jonasgrunert_test_questions'
+    - builder_table_update_jonasgrunert_test_questions_5.php
+1.0.13:
+    - 'Updated table jonasgrunert_test_answers'
+    - builder_table_update_jonasgrunert_test_answers_4.php
+1.0.14:
+    - 'Updated table jonasgrunert_test_answers'
+    - builder_table_update_jonasgrunert_test_answers_5.php

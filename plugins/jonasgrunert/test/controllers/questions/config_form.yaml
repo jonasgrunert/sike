@@ -1,0 +1,10 @@
+name: Questions
+form: $/jonasgrunert/test/models/question/fields.yaml
+modelClass: JonasGrunert\Test\Models\Question
+defaultRedirect: jonasgrunert/test/questions
+create:
+    redirect: 'jonasgrunert/test/questions/update/:id'
+    redirectClose: jonasgrunert/test/questions
+update:
+    redirect: jonasgrunert/test/questions
+    redirectClose: jonasgrunert/test/questions

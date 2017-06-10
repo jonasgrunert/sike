@@ -1,0 +1,31 @@
+title = "About Us"
+url = "/aboutus"
+layout = "default"
+description = "General AboutUs plugin"
+is_hidden = 1
+
+[builderDetails]
+modelClass = "JonasGrunert\Aboutus\Models\Member"
+identifierValue = 2
+modelKeyColumn = "id"
+displayColumn = "photo"
+notFoundMessage = "Record not found"
+
+[Members]
+==
+<div class="row">
+	<div class="row">
+	    <div class="col s12 l6 hide-on-large-only">
+		    {% partial 'AboutUs' %}
+		</div>
+		<div class="col l6">
+			{% component 'Members' %}
+		</div>
+	    <div class="col s12 l6 hide-on-med-and-down">
+	        <h3>About Us</h3>
+		    {% partial 'AboutUs' %}
+		    <h4>To infintiy and beyond</h4>
+		    {% partial 'Future' %}
+		</div>
+	</div>
+</div>

@@ -1,0 +1,11 @@
+list: $/jonasgrunert/aboutus/models/member/columns.yaml
+modelClass: JonasGrunert\Aboutus\Models\Member
+title: AboutUs
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'jonasgrunert/aboutus/aboutus/update/:id'

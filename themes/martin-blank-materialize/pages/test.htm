@@ -1,0 +1,10 @@
+title = "Test"
+url = "/test/:slug"
+layout = "default"
+description = "Displays a test."
+is_hidden = 1
+
+[testPage]
+slug = "{{ :slug }}"
+==
+{% component 'testPage' %}

@@ -1,0 +1,11 @@
+plugin:
+    name: 'jonasgrunert.aboutus::lang.plugin.name'
+    description: 'Overall Plugin for displaying about the team in materializecss style'
+    author: 'Jonas Grunert'
+    icon: oc-icon-smile-o
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: 'About Us'
+        url: jonasgrunert/aboutus/aboutus
+        icon: icon-male

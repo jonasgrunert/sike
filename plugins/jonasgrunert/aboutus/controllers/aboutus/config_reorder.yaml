@@ -1,0 +1,4 @@
+title: AboutUs
+modelClass: JonasGrunert\Aboutus\Models\Member
+toolbar:
+    buttons: reorder_toolbar
