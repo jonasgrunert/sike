@@ -1,0 +1,40 @@
+plugin:
+    name: 'jonasgrunert.siketest::lang.plugin.name'
+    description: 'jonasgrunert.siketest::lang.plugin.description'
+    author: 'Jonas Grunert'
+    icon: oc-icon-question
+    homepage: ''
+navigation:
+    test-main:
+        label: Test
+        url: jonasgrunert/siketest/test
+        icon: icon-question
+        permissions:
+            - create_test
+            - view_test
+        sideMenu:
+            test-new:
+                label: 'New test'
+                url: jonasgrunert/siketest/addingtest/create
+                icon: icon-plus
+                permissions:
+                    - create_test
+            question:
+                label: Questions
+                url: jonasgrunert/siketest/question
+                icon: icon-question-circle
+                permissions:
+                    - create_test
+            answer:
+                label: Answers
+                url: jonasgrunert/siketest/answer
+                icon: icon-exclamation-circle
+                permissions:
+                    - create_test
+permissions:
+    create_test:
+        tab: Tests
+        label: 'Admin Tests'
+    view_test:
+        tab: Tests
+        label: 'View Tests'

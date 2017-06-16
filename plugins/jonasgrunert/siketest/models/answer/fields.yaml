@@ -1,0 +1,18 @@
+fields:
+    answer:
+        label: Answer
+        span: auto
+        required: 1
+        type: text
+        comment: 'Your answer possibility'
+    result:
+        label: Result
+        span: auto
+        required: 0
+        type: checkbox
+        comment: 'Is this anwser possibilty true'
+    description:
+        label: Description
+        span: full
+        type: text
+        commentAbove: 'Addidtional information to show after completing the test'

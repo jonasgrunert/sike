@@ -5,7 +5,24 @@ plugin:
     icon: oc-icon-smile-o
     homepage: ''
 navigation:
-    main-menu-item:
+    aboutus-main:
         label: 'About Us'
         url: jonasgrunert/aboutus/aboutus
         icon: icon-male
+        permissions:
+            - aboutus_view
+            - aboutus_edit
+        sideMenu:
+            aboutus_edit:
+                label: Edit
+                url: jonasgrunert/aboutus/aboutus
+                icon: icon-edit
+                permissions:
+                    - aboutus_edit
+permissions:
+    aboutus_edit:
+        tab: 'About Us'
+        label: 'Allowed to edit all About Us tabs'
+    aboutus_view:
+        tab: 'About Us'
+        label: 'Allowed to view all About Us tabs'

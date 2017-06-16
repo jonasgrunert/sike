@@ -1,0 +1,17 @@
+name: AddingTest
+modelClass: JonasGrunert\Siketest\Models\Test
+form: $/jonasgrunert/siketest/models/test/fields.yaml
+defaultRedirect: jonasgrunert/siketest/addingtest/create
+create:
+    title: 'Create a new test'
+    redirect: 'jonasgrunert/siketest/addingtest/update/:id'
+    redirectClose: jonasgrunert/siketest/test
+    flashSave: 'Saved successful'
+update:
+    title: 'Update a test'
+    redirect: jonasgrunert/siketest/addingtest
+    redirectClose: jonasgrunert/siketest/test
+    flashSave: 'Saved successful'
+    flashDelete: 'Deleted successful'
+preview:
+    title: 'Preview a test'

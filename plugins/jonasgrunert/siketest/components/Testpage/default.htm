@@ -1,0 +1,44 @@
+{% set test = __SELF__.rendertest %}
+{% set data = __SELF__.testtable %}
+{% set trueamount = __SELF__.trueanswers %}
+<h3>
+	<span>{{data.title}}</span>
+	<span id="points" class="right">{{data.Questions|length}} Points</span>
+</h3>
+<span>{{data.description|raw}}</span>
+<div>
+	<form data-request="onHandIn" data-request-success="server(data);">
+	{% for question in data.Questions %}
+		{% set index = loop.index0 %}
+		<p>{{question.question}}</p>
+		<span class="result">{{question.description|raw}}</span><input style="display: none;" type="number" name="{{index}}" value="{{trueamount[loop.index0]}}">
+		{% set answers = test[loop.index0] %}
+		{% for answer in 0..answers|length-1 %}
+			<p>
+				<input type="checkbox" id="{{question.Answers[answer].id}}" name="{{index}}&{{question.Answers[answer].id}}">
+				<label for="{{question.Answers[answer].id}}">{{question.Answers[answer].answer}}</label>
+				{% if question.Answers[answer].result %}
+					<i class="material-icons result green-text">check</i>
+				{% else %}
+					<i class="material-icons result red-text">clear</i>
+				{% endif %}
+				<span class="result">&nbsp;{{question.Answers[answer].description}}</span>
+			</p>
+		{% endfor %}
+	{% endfor %}
+	<button class="btn waves-effect waves-light" type="submit">Submit</button>
+	</form>
+</div>
+<script type="text/javascript">
+	function server(response){
+		$('.result').toggle();
+		swal({
+			title: response.message,
+			text: "You got "+response.percentage+"% of the points.",
+			type: response.type,
+			showConfirmButton: false,
+			allowOutsideClick: true
+		});
+		$('#points').html(response.points+"/"+{{data.Questions|length}}+" Points");
+	}
+</script>

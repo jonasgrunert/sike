@@ -1,0 +1,10 @@
+name: Question
+form: $/jonasgrunert/siketest/models/question/fields.yaml
+modelClass: JonasGrunert\Siketest\Models\Question
+defaultRedirect: jonasgrunert/siketest/question
+create:
+    redirect: 'jonasgrunert/siketest/question/update/:id'
+    redirectClose: jonasgrunert/siketest/question
+update:
+    redirect: jonasgrunert/siketest/question
+    redirectClose: jonasgrunert/siketest/question

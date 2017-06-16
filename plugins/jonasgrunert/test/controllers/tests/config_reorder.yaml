@@ -1,4 +1,0 @@
-title: Tests
-modelClass: JonasGrunert\Test\Models\Test
-toolbar:
-    buttons: reorder_toolbar

@@ -1,4 +1,0 @@
-title: Questions
-modelClass: JonasGrunert\Test\Models\Question
-toolbar:
-    buttons: reorder_toolbar

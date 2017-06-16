@@ -1,0 +1,4 @@
+title: Answer
+modelClass: JonasGrunert\Siketest\Models\Answer
+toolbar:
+    buttons: reorder_toolbar

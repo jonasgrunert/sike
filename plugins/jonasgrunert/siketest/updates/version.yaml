@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table jonasgrunert_siketest_answers'
+    - builder_table_create_jonasgrunert_siketest_answers.php
+1.0.3:
+    - 'Created table jonasgrunert_siketest_questions'
+    - builder_table_create_jonasgrunert_siketest_questions.php
+1.0.4:
+    - 'Created table jonasgrunert_siketest_tests'
+    - builder_table_create_jonasgrunert_siketest_tests.php
+1.0.5:
+    - 'Updated table jonasgrunert_siketest_answers'
+    - builder_table_update_jonasgrunert_siketest_answers.php

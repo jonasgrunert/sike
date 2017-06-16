@@ -1,0 +1,21 @@
+fields:
+    question:
+        label: Question
+        span: auto
+        required: 1
+        type: text
+        comment: 'Put your Question here'
+    description:
+        label: Description
+        size: small
+        span: full
+        type: richeditor
+        commentAbove: 'Any description, which is displayed after completing the test'
+    Answers:
+        label: Answer
+        nameFrom: answer
+        descriptionFrom: description
+        emptyOption: 'No answers available'
+        span: full
+        type: relation
+        commentAbove: 'Select all answer possibilities'

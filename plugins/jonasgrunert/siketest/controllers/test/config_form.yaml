@@ -1,0 +1,10 @@
+name: Test
+form: $/jonasgrunert/siketest/models/test/fields.yaml
+modelClass: JonasGrunert\Siketest\Models\Test
+defaultRedirect: jonasgrunert/siketest/test
+create:
+    redirect: 'jonasgrunert/siketest/test/update/:id'
+    redirectClose: jonasgrunert/siketest/test
+update:
+    redirect: jonasgrunert/siketest/test
+    redirectClose: jonasgrunert/siketest/test

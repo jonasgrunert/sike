@@ -1,9 +1,9 @@
-<?php namespace JonasGrunert\Aboutus\Controllers;
+<?php namespace JonasGrunert\Siketest\Controllers;
 
 use Backend\Classes\Controller;
 use BackendMenu;
 
-class AboutUs extends Controller
+class Test extends Controller
 {
     public $implement = ['Backend\Behaviors\ListController','Backend\Behaviors\FormController','Backend\Behaviors\ReorderController'];
     
@@ -12,12 +12,12 @@ class AboutUs extends Controller
     public $reorderConfig = 'config_reorder.yaml';
 
     public $requiredPermissions = [
-        'aboutus_create' 
+        'create_test' 
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('JonasGrunert.Aboutus', 'aboutus-main');
+        BackendMenu::setContext('JonasGrunert.Siketest', 'test-main');
     }
 }
