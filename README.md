@@ -1,7 +1,7 @@
 # sike
 Open source code for the major part of the sike.at website
 
-Used theme: [Blank-Materialize](https://octobercms.com/theme/martin-blank-materializehttps://octobercms.com/theme/martin-blank-materialize) by [Martin M.](https://octobercms.com/author/Martin)
+Used theme: [Blank-Materialize](https://octobercms.com/theme/martin-blank-materialize) by [Martin M.](https://octobercms.com/author/Martin)
 
 Used Plugins:
 *   [Blog](https://octobercms.com/plugin/rainlab-blog) by [RainLab](https://octobercms.com/author/RainLab)
