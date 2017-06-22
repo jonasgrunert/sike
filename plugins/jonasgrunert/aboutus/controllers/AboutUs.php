@@ -12,12 +12,12 @@ class AboutUs extends Controller
     public $reorderConfig = 'config_reorder.yaml';
 
     public $requiredPermissions = [
-        'aboutus_create' 
+        "jonasgrunert.aboutus.edit_profiles"
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('JonasGrunert.Aboutus', 'aboutus-main');
+        BackendMenu::setContext('JonasGrunert.Aboutus', 'aboutus', 'AboutUs');
     }
 }

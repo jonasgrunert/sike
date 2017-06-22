@@ -31,12 +31,14 @@ class Testpage extends ComponentBase
 	public $testtable;
 	public $rendertest;
 	public $trueanswers;
+	protected $helper;
 
 	public function onRun()
 	{
+		$this->helper = array();
 		$this->testtable = $this->getTest();
 		$this->rendertest = $this->renderTest($this->testtable);
-		$this->trueanswers = $this->trueAnswers($this->rendertest);
+		$this->trueanswers = $this->trueAnswers($this->helper);
 	}
 
 	protected function getTest()
@@ -59,7 +61,7 @@ class Testpage extends ComponentBase
 		for($i =0; $i<count($testinfo); $i++){
 			$trueanswers = 0;
 			for($j=0; $j<count($testinfo[$i]); $j++){
-				if(Answer::where('id', $testinfo[$i][$j])->first()['result'] == 1){
+				if(Answer::where('id', $testinfo[$i][$j])->pluck('result') == 1){
 					$trueanswers++;
 				}
 			}
@@ -71,15 +73,18 @@ class Testpage extends ComponentBase
 	protected function chooseAnswers($question)
 	{
 		$answers_id = array();
+		$truearray = array();
 		$answerpossibilities = $question->Answers()->lists('id');
 		for ($i = 0; $i<4 && $i < count($answerpossibilities); $i++){
 			$id = rand(0, count($answerpossibilities)-1);
-			if ($this->existsAnswer($answers_id, $answerpossibilities[$id])){
-				array_push($answers_id, $answerpossibilities[$id]);
+			if ($this->existsAnswer($answers_id, $id)){
+				array_push($answers_id, $id);
+				array_push($truearray, $answerpossibilities[$id]);
 			} else {
 				$i--;
 			}
 		}
+		array_push($this->helper, $truearray);
 		return $answers_id;
 	}
 
@@ -119,7 +124,7 @@ class Testpage extends ComponentBase
 					$block = false;
 					$questionpoints=0;
 				}
-				$answerid = intval(substr(stristr($inputid, "&"),1));
+				$answerid = substr(stristr($inputid, "&"),1);
 				$supposed = Answer::where('id', intval($answerid))->pluck('result');
 				$totalquestionpoints=intval($truth[$questionid]);
 				if ($real == "on"){

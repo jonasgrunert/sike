@@ -10,12 +10,12 @@ class AddingTest extends Controller
     public $formConfig = 'config_form.yaml';
 
     public $requiredPermissions = [
-        'create_test' 
+        'jonasgrunert.siketest.edit_tests' 
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('JonasGrunert.Siketest', 'test-main', 'test-new');
+        BackendMenu::setContext('JonasGrunert.Siketest', 'test', 'addingtest');
     }
 }

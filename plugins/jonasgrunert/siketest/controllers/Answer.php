@@ -12,12 +12,12 @@ class Answer extends Controller
     public $reorderConfig = 'config_reorder.yaml';
 
     public $requiredPermissions = [
-        'create_test' 
+        'jonasgrunert.siketest.edit_tests' 
     ];
 
     public function __construct()
     {
         parent::__construct();
-        BackendMenu::setContext('JonasGrunert.Siketest', 'test-main', 'answer');
+        BackendMenu::setContext('JonasGrunert.Siketest', 'test', 'answer');
     }
 }
