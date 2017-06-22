@@ -11,4 +11,11 @@ Used Plugins:
 *   [Backend Plus](https://octobercms.com/plugin/indikator-backend) by [INDIKATOR](https://octobercms.com/author/Indikator)
 *   [Blog Stats & Graphs](https://octobercms.com/plugin/indikator-blogstat) by [INDIKATOR](https://octobercms.com/author/Indikator)
 
+Used CSS:
+*   [W3-CSS](https://www.w3schools.com/w3css)
+*   [Materializecss](http://materializecss.com/)
+
+Used JS:
+*   [JQuery](https://jquery.com/)
+
 All of those were integrated and extended by Jonas Grunert.
