@@ -13,3 +13,6 @@ columns:
         searchable: true
         invisible: true
         sortable: true
+    question_id:
+        label: ID
+        type: number

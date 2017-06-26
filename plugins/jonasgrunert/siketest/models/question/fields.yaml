@@ -12,10 +12,9 @@ fields:
         type: richeditor
         commentAbove: 'Any description, which is displayed after completing the test'
     Answers:
-        label: Answer
+        label: Answers
         nameFrom: answer
-        descriptionFrom: description
-        emptyOption: 'No answers available'
         span: full
-        type: relation
-        commentAbove: 'Select all answer possibilities'
+        type: taglist
+        mode: relation
+        customTags: false

@@ -29,6 +29,12 @@ class Plugin extends PluginBase
     					"icon" => "icon-plus",
     					"permissions" => ["jonasgrunert.siketest.edit_tests"]
     				],
+                    "edit" => [
+                        "label" => "Edit Tests",
+                        "url" => Backend::url('jonasgrunert/siketest/edit'),
+                        "icon" => "icon-pencil",
+                        "permissions" => ["jonasgrunert.siketest.edit_tests"]
+                    ],
     				"question" => [
     					"label" => "Questions",
     					"url" => Backend::url('jonasgrunert/siketest/question'),
@@ -65,6 +71,15 @@ class Plugin extends PluginBase
     	return [
     		'JonasGrunert\Siketest\components\Testpage' => 'TestPage'
     	];
+    }
+
+    public function registerFormWidgets(){
+        return [
+            'JonasGrunert\Siketest\FormWidgets\answereditor' => [
+                'label' => 'Answer Editor',
+                'code' => 'answereditor'
+            ]
+        ];
     }
 
     public function registerSettings()

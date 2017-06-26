@@ -22,10 +22,9 @@ fields:
         type: richeditor
         commentAbove: 'Some description for your test'
     Questions:
-        label: Questions
-        span: full
+        label: Answers
         nameFrom: question
-        descriptionFrom: description
-        emptyOption: 'No questions available'
-        type: relation
-        commentAbove: 'Select all questions'
+        span: full
+        type: taglist
+        mode: relation
+        customTags: false
