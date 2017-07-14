@@ -1,0 +1,8 @@
+Questions:
+ label: Questions
+ view:
+  list: $/jonasgrunert/siketest/models/question/columns.yaml
+  toolbarButtons: create|delete
+ manage:
+  form: $/jonasgrunert/siketest/models/question/fields.yaml
+  list: $/jonasgrunert/siketest/models/question/columns.yaml

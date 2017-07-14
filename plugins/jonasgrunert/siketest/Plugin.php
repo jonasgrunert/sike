@@ -69,16 +69,16 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
     	return [
-    		'JonasGrunert\Siketest\components\Testpage' => 'TestPage'
+    		'JonasGrunert\Siketest\components\Testpage' => 'TestPage',
+            'JonasGrunert\Siketest\components\Testlist' => 'TestList'
     	];
     }
 
     public function registerFormWidgets(){
         return [
-            'JonasGrunert\Siketest\FormWidgets\answereditor' => [
-                'label' => 'Answer Editor',
-                'code' => 'answereditor'
-            ]
+            'JonasGrunert\Siketest\formwidgets\TextRelation' => 'textrelation',
+            'JonasGrunert\Siketest\formwidgets\CheckRelation' => 'checkrelation',
+            'JonasGrunert\Siketest\formwidgets\NestedRepeater' => 'nestedrepeater'
         ];
     }
 

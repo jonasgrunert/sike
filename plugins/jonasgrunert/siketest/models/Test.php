@@ -26,6 +26,6 @@ class Test extends Model
 
     //Relations
     public $hasMany = [
-        'Questions' => 'JonasGrunert\Siketest\Models\Question'
+        'Questions' => Question::class
     ];
 }

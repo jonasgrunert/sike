@@ -26,6 +26,8 @@ class Question extends Model
 
     // Relations
     public $hasMany = [
-        'Answers' => 'JonasGrunert\Siketest\Models\Answer'
+        'Answers' => Answer::class
     ];
+
+    protected $fillable = ['Answers'];
 }

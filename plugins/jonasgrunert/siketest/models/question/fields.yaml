@@ -13,8 +13,5 @@ fields:
         commentAbove: 'Any description, which is displayed after completing the test'
     Answers:
         label: Answers
-        nameFrom: answer
-        span: full
-        type: taglist
-        mode: relation
-        customTags: false
+        type: partial
+        path: answer_items

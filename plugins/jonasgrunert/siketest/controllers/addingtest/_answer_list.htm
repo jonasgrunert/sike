@@ -1,0 +1,33 @@
+<?php if (count($answers)): ?>
+    <div class="list-preview list-flush">
+        <div class="control-list">
+            <table class="table data" data-control="rowlink">
+                <thead>
+                    <tr>
+                        <th><span>Answer</span></th>
+                        <th style="width: 10%"><span></span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($answers as $answer): ?>
+                        <tr>
+                            <td>
+                                <?= e($answer->answer) ?>
+                            </td>
+                            <td class="nolink text-right">
+                                <a
+                                    href="javascript:;"
+                                    data-request="onDeleteAnswer"
+                                    data-request-data="record_id: '<?= $answer->id ?>'"
+                                    data-request-confirm="Delete this item?"
+                                    class="oc-icon-remove"
+                                    data-toggle="tooltip"
+                                    title="Remove"></a>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<?php endif ?>

@@ -2,6 +2,7 @@
 
 use Backend\Classes\Controller;
 use BackendMenu;
+use Input;
 
 class Edit extends Controller
 {

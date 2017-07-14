@@ -7,3 +7,4 @@ showCheckboxes: true
 toolbar:
     search:
         prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'jonasgrunert/siketest/test/preview/:id'

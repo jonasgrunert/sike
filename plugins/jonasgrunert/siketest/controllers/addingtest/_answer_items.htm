@@ -1,0 +1,15 @@
+<!-- <div class="text-danger">Sorry, this is as far as behaviors can go...</div> -->
+
+<div id="#answerList">
+    <?= $this->makePartial('answer_list', ['answers' => $model->Answers]) ?>
+</div>
+<p>
+    <a
+        href="javascript:;"
+        class="btn btn-secondary oc-icon-plus"
+        data-control="popup"
+        data-handler="onLoadCreateAnswerForm"
+        data-size="large">
+        Add answer
+    </a>
+</p>

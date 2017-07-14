@@ -22,7 +22,7 @@ fields:
         type: richeditor
         commentAbove: 'Some description for your test'
     Questions:
-        label: Answers
+        label: Questions
         nameFrom: question
         span: full
         type: taglist

@@ -1,0 +1,8 @@
+Answers:
+ label: Answers
+ view:
+  list: $/jonasgrunert/siketest/models/answer/columns.yaml
+  toolbarButtons: create|delete
+ manage:
+  form: $/jonasgrunert/siketest/models/answer/fields.yaml
+  list: $/jonasgrunert/siketest/models/answer/columns.yaml

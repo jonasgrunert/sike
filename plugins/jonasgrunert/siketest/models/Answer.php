@@ -23,4 +23,6 @@ class Answer extends Model
      * @var string The database table used by the model.
      */
     public $table = 'jonasgrunert_siketest_answers';
+
+    protected $guarded = [];
 }

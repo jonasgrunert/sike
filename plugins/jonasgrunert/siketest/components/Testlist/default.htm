@@ -1,0 +1,8 @@
+<ul class="collapsible" data-collapsible="accordion">
+	{% for test in tests %}
+		<li>
+			<div class="collapsible-header"><a href='{{ test.url }}'>{{ test.title }}</a><span class="right">{{ test.Questions|length }} Questions</span></div>
+			<div class="collapsible-body"><span>{{test.description|raw}}</span></div>
+		</li>
+	{% endfor %}
+</ul>
