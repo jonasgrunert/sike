@@ -1,7 +1,7 @@
 title = "Blog"
 url = "/blog/:page"
 layout = "default"
-description = "Blogpost List"
+description = "Experince the SIke feeling. We are giving you insights in our minds by writing our Blog. Fell free to read, share, and if you want to contact us."
 is_hidden = 0
 
 [blogPosts]
@@ -54,7 +54,7 @@ injectMainScript = 1
             <span class='card-title'><a href="{{ post.url }}" class='white-text'>{{ post.title }}</a></span>
         </div>        
             <div class="card-content" id="{{post.slug}}">
-                {{ post.summary|raw }}
+                <p>{{ post.summary|raw }}</p>
                 <div id="{{post.slug~"text"}}" class="section" style="display: none;">
                     <div class="divider"></div>
                     <br>
@@ -62,28 +62,31 @@ injectMainScript = 1
                 </div>
             </div>
         <div class='card-action'>
-            {% if post.categories.count > 0 %}
-                {% for category in post.categories %}
-                    <a href="/blog/category/{{category.slug}}/1">
-                        <div class='chip'>
-                            {{ category.name }}
-                        </div>
-                    </a>
-                {% endfor %}
-            {% else %}
-                <div class='chip'>
-                    Sorry, but there is no category.
+            <div class="row">
+                <div class="col s12 m10">
+                {% if post.categories.count > 0 %}
+                    {% for category in post.categories %}
+                        <a href="/blog/category/{{category.slug}}/1">
+                            <div class='chip'>
+                                {{ category.name }}
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <div class='chip'>
+                        Sorry, but there is no category.
+                    </div>
+                {% endif%}
                 </div>
-            {% endif%}
-            <span class='right'>{{ post.published_at|date('M d, Y') }}</span>
+                <div class="col s12 m2">
+                    <span class='right'>{{ post.published_at|date('M d, Y') }}</span>
+                </div>
+            </div>
         </div>
     </div>
     <script>
-        var trigger = "{{post.slug}}";
-        {% set expand = post.slug~"text" %} 
-        var expandjs = "{{expand}}";
-        $("#"+trigger).click(function(){
-            $("#"+expandjs).slideToggle();
+        $("#{{post.slug}}").click(function(){
+            $("#{{post.slug}}text").slideToggle();
         });
     </script>
 {% else %}

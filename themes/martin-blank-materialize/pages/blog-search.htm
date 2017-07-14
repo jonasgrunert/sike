@@ -1,8 +1,8 @@
 title = "Blog Search"
 url = "/blog/search/:search/:page"
 layout = "default"
-description = "Search for the Blog Page"
-is_hidden = 1
+description = "Now you want to read that post from a year ago, but you do not want to scroll and you forgot the title? No problem get in here and search for Keyword and everything you need."
+is_hidden = 0
 
 [searchResult]
 searchTerm = "{{ :search }}"
@@ -59,7 +59,7 @@ injectMainScript = 1
             <span class='card-title'><a href="{{ post.url }}" class='white-text'>{{ post.title }}</a></span>
         </div>        
             <div class="card-content" id="{{post.slug}}">
-                {{ post.summary|raw }}
+                <p>{{ post.summary|raw }}</p>
                 <div id="{{post.slug~"text"}}" class="section" style="display: none;">
                        <div class="divider"></div>
                        <br>
@@ -67,28 +67,31 @@ injectMainScript = 1
                 </div>
             </div>
         <div class='card-action'>
-            {% if post.categories.count > 0 %}
-                {% for category in post.categories %}
-                    <a href="/blog/category/{{category.slug}}/1">
-                        <div class='chip'>
-                            {{ category.name }}
-                        </div>
-                    </a>
-                {% endfor %}
-            {% else %}
-                <div class='chip'>
-                    Sorry, but there is no category.
+            <div class="row">
+                <div class="col s12 m10">
+                {% if post.categories.count > 0 %}
+                    {% for category in post.categories %}
+                        <a href="/blog/category/{{category.slug}}/1">
+                            <div class='chip'>
+                                {{ category.name }}
+                            </div>
+                        </a>
+                    {% endfor %}
+                {% else %}
+                    <div class='chip'>
+                        Sorry, but there is no category.
+                    </div>
+                {% endif%}
                 </div>
-            {% endif%}
-            <span class='right'>{{ post.published_at|date('M d, Y') }}</span>
+                <div class="col s12 m2">
+                    <span class='right'>{{ post.published_at|date('M d, Y') }}</span>
+                </div>
+            </div>
         </div>
     </div>
     <script>
-        var trigger = "{{post.slug}}";
-        {% set expand = post.slug~"text" %} 
-        var expandjs = "{{expand}}";
-        $("#"+trigger).click(function(){
-            $("#"+expandjs).slideToggle();
+        $("#{{post.slug}}").click(function(){
+            $("#{{post.slug}}text").slideToggle();
         });
     </script>
 {% else %}

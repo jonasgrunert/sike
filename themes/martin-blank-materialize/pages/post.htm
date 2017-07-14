@@ -1,8 +1,8 @@
 title = "Post"
 url = "/blog/post/:slug"
 layout = "default"
-description = "Post page"
-is_hidden = 1
+description = "Look into our posts. They are handcrafted and well written. We appreciate that you look into them."
+is_hidden = 0
 
 [ssbuttonsssb]
 facebook = 1
@@ -62,7 +62,7 @@ categoryPage = "blog-category"
     {% endif %}
 </div>
 
-<p class="flow-text">{{ post.content_html|raw }}</p>
+<div>{{ post.content_html|raw }}</div>
 {% component 'ssbuttonsssb' %}
 <script>
     $('.carousel').carousel({fullWidth: true});
