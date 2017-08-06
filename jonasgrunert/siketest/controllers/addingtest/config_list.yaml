@@ -1,0 +1,10 @@
+list: $/jonasgrunert/siketest/models/test/columns.yaml
+modelClass: JonasGrunert\Siketest\Models\Test
+title: Test
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'jonasgrunert/siketest/addingtest/update/:id'
