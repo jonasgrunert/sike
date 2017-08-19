@@ -2,7 +2,9 @@
 
 use Cms\Classes\ComponentBase;
 use JonasGrunert\Siketest\Models\Test;
+use JonasGrunert\Siketest\Models\Question;
 use JonasGrunert\Siketest\Models\Answer;
+use Redirect;
 use Input;
 
 class Testpage extends ComponentBase
@@ -28,18 +30,20 @@ class Testpage extends ComponentBase
 		];
 	}
 
-	public $testtable;
-	public $rendertest;
-	public $trueanswers;
-	public $debug;
-	protected $helper;
+	public $test;
+	public $questions;
+	public $questionids;
+	public $answers;
+	public $trueamount;
 
 	public function onRun()
 	{
-		$this->helper = array();
-		$this->testtable = $this->getTest();
-		$this->rendertest = $this->renderTest($this->testtable);
-		$this->trueanswers = $this->trueAnswers($this->helper);
+		$this->test = $this->getTest();
+		if (!isset($this->test)){
+			return Redirect::to('/test');
+		}else{
+			$this->renderTest();
+		}
 	}
 
 	protected function getTest()
@@ -49,106 +53,79 @@ class Testpage extends ComponentBase
 		return $test;
 	}
 
-	protected function renderTest($testinfo){
-		$test = array();
-		foreach ($testinfo->Questions()->get() as $question){
-			array_push($test, $this->chooseAnswers($question));
+	protected function renderTest(){
+		$testid = $this->test->id;
+		$this->questions = Question::where('test_id', $testid)->get();
+		$this->questionids = Question::where('test_id', $testid)->lists('id');
+		$this->trueamount = array();
+		$this->answers = array();
+		for ($i = 0; $i<count($this->questionids); $i++){
+			$this->selectAnswers($this->questionids[$i]);
 		}
-		return $test;
 	}
 
-	protected function trueAnswers($testinfo){
-		$true = array();
-		for($i =0; $i<count($testinfo); $i++){
-			$trueanswers = 0;
-			for($j=0; $j<count($testinfo[$i]); $j++){
-				if(Answer::where('id', $testinfo[$i][$j])->value('result') == 1){
-					$trueanswers++;
-				}
-			}
-			array_push($true, $trueanswers);
-		}
-		return $true;
+	protected function selectAnswers($question){
+		$true = $this->randomize($question);		
+		array_push($this->trueamount, $true);
+		$trueanswers = Answer::where('question_id', $question)->where('result', 1)->get();
+		$falseanswers = Answer::where('question_id', $question)->where('result', 0)->get();
+		$helper = array_merge($this->getAnswers($trueanswers->toArray(), $true), $this->getAnswers($falseanswers->toArray(), 5-$true));
+		shuffle($helper);
+		array_push($this->answers, $helper);
 	}
 
-	protected function chooseAnswers($question)
-	{
-		$answers_id = array();
-		$truearray = array();
-		$answerpossibilities = $question->Answers()->lists('id');
-		for ($i = 0; $i<4 && $i < count($answerpossibilities); $i++){
-			$id = rand(0, count($answerpossibilities)-1);
-			if ($this->existsAnswer($answers_id, $id, $question)){
-				array_push($answers_id, $id);
-				array_push($truearray, $answerpossibilities[$id]);
-			} else {
+	protected function getAnswers($answers, $amount){
+		$helper = array();
+		$helperid = array();
+		for ($i=0; $i< $amount; $i++){
+			$id = rand(0, count($answers)-1);
+			if (!in_array($id, $helperid)){
+				array_push($helper, $answers[$id]);
+				array_push($helperid, $id);
+			}else{
 				$i--;
 			}
 		}
-		array_push($this->helper, $truearray);
-		return $answers_id;
+		return $helper;
 	}
 
-	protected function existsAnswer($existing, $new, $question)
-	{
-		for ($i = 0; $i < count($existing); $i++){
-			if($existing[$i] == $new){
-				return false;
-			}
+	protected function randomize($question){
+		$amount = Answer::where('question_id', $question)->where('result', 1)->count();
+		$top = $amount;
+		if ($top>4){
+			$top=4;
 		}
-		return true;
+		return rand(1,$top);
 	}
 
 	public function onHandIn(){
-		$truth = array();
-		$supposed = null;
-		$oldquestionid = null;
-		$questionid = null;
-		$currentquestionid = null;
-		$totalquestionpoints=0;
-		$questionpoints=0;
-		$points=0;
-		$block= false;
-		$input= Input::all();
-		foreach ($input as $inputid => $real){
-			if(strpos($inputid, "&")== false){
-				array_push($truth, $real);
-			}
-		}
-		foreach ($input as $inputid => $real){
-			if(strpos($inputid, "&")!= false){
-				$questionid = stristr($inputid, "&", true);
-				if ($questionid!=$oldquestionid&&$oldquestionid!=null){
-					if($block == false){
-						if($totalquestionpoints==0){
-							$points++;
+		$testid = Input::get('testid');
+		$test = Test::where('id', $testid)->first();
+		$points = 0;
+		foreach ($test->Questions as $question){
+			$block = false;
+			$questionpoints = Input::get(strval($question->id));
+			$realquestionpoints = 0;
+			foreach ($question->Answers as $answer){
+				if($block == false){
+					if (null !== (Input::get(strval($question->id)."&".strval($answer->id)))){
+						if($answer->result==0){
+							$block = true;
 						}else{
-							$points+=$questionpoints/$totalquestionpoints;
+							$realquestionpoints++;
 						}
 					}
-					$block = false;
-					$questionpoints=0;
 				}
-				$answerid = substr(stristr($inputid, "&"),1);
-				$supposed = Answer::where('id', intval($answerid))->pluck('result');
-				$totalquestionpoints=intval($truth[$questionid]);
-				if ($real == "on"){
-					$questionpoints++;
+			}
+			if($block==false){
+				if ($questionpoints==0){
+					$points++;
+				} else {
+					$points += ($realquestionpoints/$questionpoints);
 				}
-				if($supposed == 0 && $real == "on"){
-					$block=true;
-				}
-				$oldquestionid=$questionid;
 			}
 		}
-		if($block == false){
-			if($totalquestionpoints=0){
-				$points++;
-			}else{
-				$points+=$questionpoints/$totalquestionpoints;
-			}
-		}
-		$totalpoints=count($truth);
+		$totalpoints=Input::get('trueamount');
 		$percentage=$points/$totalpoints;
 		$type = "error";
 		$message = "Something went wrong";
